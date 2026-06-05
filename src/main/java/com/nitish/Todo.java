@@ -4,13 +4,13 @@ public class Todo  {
 	   private Integer userId;
 	    private Integer id;
 	    private String title;
-	    private Boolean completed;
+	    private Boolean iscompleted;
 	    
-		public Todo(Integer userId, Integer id, String title, Boolean completed) {
+		public Todo(Integer userId, Integer id, String title, Boolean iscompleted) {
 			this.userId = userId;
 			this.id = id;
 			this.title = title;
-			this.completed = completed;
+			this.iscompleted = iscompleted;
 		}
 		
 		public Integer getUserId() {
@@ -32,14 +32,14 @@ public class Todo  {
 			this.title = title;
 		}
 		public Boolean getCompleted() {
-			return completed;
+			return iscompleted;
 		}
-		public void setCompleted(Boolean completed) {
-			this.completed = completed;
+		public void setCompleted(Boolean iscompleted) {
+			this.iscompleted = iscompleted;
 		}
 		@Override
 		public String toString() {
-			return "Todo [userId=" + userId + ", id=" + id + ", title=" + title + ", completed=" + completed + "]";
+			return "Todo [userId=" + userId + ", id=" + id + ", title=" + title + ", iscompleted=" + iscompleted + "]";
 		}
 	    
 	    

@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -19,17 +20,20 @@ public class TodoController {
 	public TodoController() {
 		
 		todoList=new ArrayList<>();
-		todoList.add(new Todo(1, 1, "delectus aut autem", false));
-		todoList.add(new Todo(1, 2, "quis ut nam facilis et officia qui", true));
-		todoList.add(new Todo(2, 3, "fugiat veniam minus", false));
-		todoList.add(new Todo(2, 4, "et porro tempora", true));
-		todoList.add(new Todo(3, 5, "laboriosam mollitia et enim quasi adipisci", false));	
+		todoList.add(new Todo(1, 1, "Todo 1", true));
+		todoList.add(new Todo(1, 2, "Todo 2", true));
+		todoList.add(new Todo(2, 3, "Todo 3", false));
+		todoList.add(new Todo(2, 4, "Todo 4 ", true));
+		todoList.add(new Todo(3, 5, "Todo 5", false));	
 		
 	}
 	@GetMapping("/todos")
-	public ResponseEntity<List<Todo>> getTodos()
+	public ResponseEntity<List<Todo>> getTodos(@RequestParam(required = false,defaultValue = "true") Boolean  iscomplted)
 	{
-		return ResponseEntity.ok(todoList);
+	    System.out.println("METHOD ENTERED");
+	    System.out.println("incoming query param = " + iscomplted);
+
+	    return ResponseEntity.ok(todoList);
 	}
 	
 	@PostMapping("/todos")
@@ -49,6 +53,7 @@ public class TodoController {
 	    }
 	    return ResponseEntity.notFound().build(); 
 	}
+	  
 
 	
 	
